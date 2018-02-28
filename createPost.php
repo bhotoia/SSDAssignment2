@@ -10,6 +10,11 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
+        <form action="createPost.php" method="post">
+            Title: <input type="text" name="postTitle"><br/>
+            Content: <textarea name="postCont"></textarea>
+            <input type="submit">
+        </form>
         <?php
         $servername = "localhost";
         $username = "root";
@@ -23,22 +28,9 @@ and open the template in the editor.
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT postID, postTitle, postCont, postDate FROM blog_post ORDER BY postDate DESC";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // output data of each row
-
-            while ($row = $result->fetch_assoc()) {
-                echo "ID: " . $row["postID"] . "\nTitle: " . $row["postTitle"] . "\nContent:" . $row["postCont"] . "\nDate:" . $row["postDate"] . "<br>";
-            }
-        } else {
-            echo "0 results";
-        }
         
-        $conn->close();
-        //References
-        //https://www.w3schools.com/php/php_mysql_select.asp
+// insert record
+      
         ?>
     </body>
 </html>
